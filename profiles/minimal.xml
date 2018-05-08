@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+  <users config:type="list">
+    <user>
+      <username>root</username>
+      <fullname>root</fullname>
+      <uid>0</uid>
+      <gid>0</gid>
+      <home>/root</home>
+      <shell>/bin/bash</shell>
+      <encrypted config:type="boolean">false</encrypted>
+      <user_password>nots3cr3t</user_password>
+    </user>
+  </users>
+</profile>
