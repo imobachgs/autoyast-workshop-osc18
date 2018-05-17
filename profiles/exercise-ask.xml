@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+  <add-on>
+    <add_on_products config:type="list">
+      <listentry>
+        <media_url><![CDATA[http://download.opensuse.org/distribution/leap/15.0/repo/non-oss/]]></media_url>
+        <product>openSUSE-Addon-NonOss</product>
+        <product_dir>/</product_dir>
+      </listentry>
+      <listentry>
+        <media_url><![CDATA[http://download.opensuse.org/update/leap/15.0/non-oss/]]></media_url>
+        <product>openSUSE-Addon-NonOss-Update</product>
+        <product_dir>/</product_dir>
+      </listentry>
+      <listentry>
+        <media_url><![CDATA[http://download.opensuse.org/distribution/leap/15.0/repo/oss/]]></media_url>
+        <product>openSUSE-Oss</product>
+        <product_dir>/</product_dir>
+      </listentry>
+      <listentry>
+        <media_url><![CDATA[http://download.opensuse.org/update/leap/15.0/oss/]]></media_url>
+        <product>openSUSE-Addon-Oss-Update</product>
+        <product_dir>/</product_dir>
+      </listentry>
+    </add_on_products>
+  </add-on>
+  <users config:type="list">
+    <user>
+      <username>root</username>
+      <fullname>root</fullname>
+      <uid>0</uid>
+      <gid>0</gid>
+      <home>/root</home>
+      <shell>/bin/bash</shell>
+      <encrypted config:type="boolean">false</encrypted>
+      <user_password>nots3cr3t</user_password>
+    </user>
+    <user>
+      <encrypted config:type="boolean">false</encrypted>
+      <fullname>John Doe</fullname>
+      <gid>100</gid>
+      <shell>/usr/bin/fish</shell>
+      <uid>1000</uid>
+      <user_password>nots3cr3t</user_password>
+      <username>jdoe</username>
+    </user>
+  </users>
+
+  <keyboard>
+    <keymap>english</keymap>
+  </keyboard>
+
+  <language>
+    <!-- primary -->
+    <language>en_US</language>
+    <!-- secondary languages -->
+    <languages>cs_CZ,de_DE,en_US,es_ES</languages>
+  </language>
+
+  <software>
+    <packages config:type="list">
+      <package>fish</package>
+    </packages>
+
+    <patterns config:type="list">
+      <pattern>enlightenment</pattern>
+      <pattern>enhanced_base</pattern>
+      <pattern>enhanced_base_opt</pattern>
+      <pattern>yast2_basis</pattern>
+    </patterns>
+  </software>
+
+  <partitioning config:type="list">
+    <drive>
+      <use>all</use>
+      <type config:type="symbol">CT_DISK</type>
+      <partitions config:type="list">
+        <partition>
+          <create_subvolumes config:type="boolean">true</create_subvolumes>
+          <filesystem config:type="symbol">btrfs</filesystem>
+          <mount>/</mount>
+          <size>10GiB</size>
+          <create_subvolumes config:type="boolean">true</create_subvolumes>
+        </partition>
+        <partition>
+          <filesystem config:type="symbol">ext4</filesystem>
+          <mount>/home</mount>
+          <size>max</size>
+        </partition>
+        <partition>
+          <filesystem config:type="symbol">swap</filesystem>
+          <mount>swap</mount>
+          <size>512MiB</size>
+        </partition>
+      </partitions>
+    </drive>
+  </partitioning>
+
+  <networking>
+    <keep_install_network config:type="boolean">true</keep_install_network>
+  </networking>
+
+  <general>
+    <ask-list config:type="list">
+      <ask>
+        <title>Desktop Environment</title>
+        <question>What Desktop Environment do you prefer?</question>
+        <default>gnome</default>
+        <pathlist config:type="list">
+          <path>software,patterns,0</path>
+        </pathlist>
+        <selection config:type="list">
+          <entry>
+            <value>gnome</value>
+            <label>GNOME</label>
+          </entry>
+          <entry>
+            <value>enlightenment</value>
+            <label>Enlightenment</label>
+          </entry>
+          <entry>
+            <value>kde</value>
+            <label>Plasma</label>
+          </entry>
+        </selection>
+        <dialog config:type="integer">0</dialog>
+      </ask>
+
+      <ask>
+        <title>User</title>
+        <question>Username</question>
+        <type>string</type>
+        <pathlist config:type="list">
+          <path>users,1,username</path>
+        </pathlist>
+        <element config:type="integer">1</element>
+        <dialog config:type="integer">1</dialog>
+      </ask>
+
+      <ask>
+        <question>Full name</question>
+        <type>string</type>
+        <pathlist config:type="list">
+          <path>users,1,fullname</path>
+        </pathlist>
+        <element config:type="integer">0</element>
+        <dialog config:type="integer">1</dialog>
+      </ask>
+
+      <ask>
+        <question>Password</question>
+        <type>string</type>
+        <password config:type="boolean">true</password>
+        <pathlist config:type="list">
+          <path>users,0,user_password</path>
+          <path>users,1,user_password</path>
+        </pathlist>
+        <element config:type="integer">2</element>
+        <dialog config:type="integer">1</dialog>
+      </ask>
+
+      <ask>
+        <title>Partitioning</title>
+        <question>Filesystem for /home</question>
+        <type>symbol</type>
+        <pathlist config:type="list">
+          <path>partitioning,0,partitions,1,filesystem</path>
+        </pathlist>
+        <selection config:type="list">
+          <entry>
+            <value>xfs</value>
+            <label>XFS</label>
+          </entry>
+          <entry>
+            <value>ext4</value>
+            <label>ext4</label>
+          </entry>
+        </selection>
+        <dialog config:type="integer">2</dialog>
+      </ask>
+    </ask-list>
+  </general>
+</profile>
