@@ -1,0 +1,12 @@
+<software>
+  <packages config:type="list">
+    <package>tmux</package>
+  </packages>
+
+  <patterns config:type="list">
+    <pattern>enhanced_base</pattern>
+    <pattern>enhanced_base_opt</pattern>
+    <pattern>lxqt</pattern>
+    <pattern>yast2_basis</pattern>
+  </patterns>
+</software>

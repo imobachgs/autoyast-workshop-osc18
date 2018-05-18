@@ -1,0 +1,13 @@
+<ask>
+  <question>Password</question>
+  <type>string</type>
+  <password config:type="boolean">true</password>
+  <pathlist config:type="list">
+    <path>users,0,user_password</path>
+    <path>users,1,user_password</path>
+  </pathlist>
+  <element config:type="integer">1</element>
+  <dialog config:type="integer">1</dialog>
+</ask>
+
+

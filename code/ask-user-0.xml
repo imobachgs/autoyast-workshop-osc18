@@ -1,0 +1,10 @@
+<ask>
+  <title>User</title>
+  <question>Username</question>
+  <type>string</type>
+  <pathlist config:type="list">
+    <path>users,1,username</path>
+  </pathlist>
+  <element config:type="integer">0</element>
+  <dialog config:type="integer">1</dialog>
+</ask>

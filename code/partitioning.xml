@@ -1,0 +1,23 @@
+<partitioning>
+  <drive>
+    <partitions config:type="list">
+      <partition>
+        <filesystem config:type="symbol">btrfs</filesystem>
+        <mount>/</mount>
+        <size>10GiB</size>
+      </partition>
+      <partition>
+        <filesystem config:type="symbol">ext4</filesystem>
+        <mount>/home</mount>
+        <size>max</size>
+      </partition>
+      <partition>
+        <filesystem config:type="symbol">swap</filesystem>
+        <mount>swap</mount>
+        <size>512MiB</size>
+      </partition>
+    </partitions>
+    <type config:type="symbol">CT_DISK</type>
+    <use>all</use>
+  </drive>
+</partitioning>

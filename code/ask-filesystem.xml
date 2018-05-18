@@ -1,0 +1,19 @@
+<ask>
+  <title>Partitioning</title>
+  <question>Filesystem for /home</question>
+  <type>symbol</type>
+  <pathlist config:type="list">
+    <path>partitioning,0,partitions,1,filesystem</path>
+  </pathlist>
+  <selection config:type="list">
+    <entry>
+      <value>xfs</value>
+      <label>XFS</label>
+    </entry>
+    <entry>
+      <value>ext4</value>
+      <label>ext4</label>
+    </entry>
+  </selection>
+  <dialog config:type="integer">2</dialog>
+</ask>
