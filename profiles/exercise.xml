@@ -100,5 +100,26 @@
 
   <networking>
     <keep_install_network config:type="boolean">true</keep_install_network>
+    <interfaces config:type="list">
+      <interface>
+        <bootproto>dhcp</bootproto>
+        <device>eth0</device>
+        <startmode>auto</startmode>
+      </interface>
+    </interfaces>
   </networking>
+
+  <firewall>
+    <zones config:type="list">
+      <zone>
+        <name>public</name>
+	<interfaces config:type="list">
+	  <interface>eth0</interface>
+	</interfaces>
+	<services config:type="list">
+	  <service>ssh</service>
+        </services>
+      </zone>
+    </zones>
+  </firewall>
 </profile>
