@@ -99,7 +99,7 @@
   </partitioning>
 
   <networking>
-    <keep_install_network config:type="boolean">true</keep_install_network>
+    <keep_install_network config:type="boolean">false</keep_install_network>
     <interfaces config:type="list">
       <interface>
         <bootproto>dhcp</bootproto>
@@ -110,6 +110,9 @@
   </networking>
 
   <firewall>
+    <default_zone>block</default_zone>
+    <enable_firewall config:type="boolean">true</enable_firewall>
+    <start_firewall config:type="boolean">true</start_firewall>
     <zones config:type="list">
       <zone>
         <name>public</name>
@@ -122,4 +125,13 @@
       </zone>
     </zones>
   </firewall>
+
+  <services-manager>
+    <services>
+      <disable config:type="list"/>
+      <enable config:type="list">
+	<service>sshd</service>
+      </enable>
+    </services>
+  </services-manager>
 </profile>
