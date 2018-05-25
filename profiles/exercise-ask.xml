@@ -28,11 +28,6 @@
   <users config:type="list">
     <user>
       <username>root</username>
-      <fullname>root</fullname>
-      <uid>0</uid>
-      <gid>0</gid>
-      <home>/root</home>
-      <shell>/bin/bash</shell>
       <encrypted config:type="boolean">false</encrypted>
       <user_password>nots3cr3t</user_password>
     </user>
@@ -52,11 +47,14 @@
   </keyboard>
 
   <language>
-    <!-- primary -->
     <language>en_US</language>
-    <!-- secondary languages -->
     <languages>cs_CZ,de_DE,en_US,es_ES</languages>
   </language>
+
+  <timezone>
+    <hwclock>UTC</hwclock>
+    <timezone>Atlantic/Canary</timezone>
+  </timezone>
 
   <software>
     <packages config:type="list">
@@ -98,8 +96,41 @@
   </partitioning>
 
   <networking>
-    <keep_install_network config:type="boolean">true</keep_install_network>
+    <keep_install_network config:type="boolean">false</keep_install_network>
+    <interfaces config:type="list">
+      <interface>
+        <bootproto>dhcp</bootproto>
+        <device>eth0</device>
+        <startmode>auto</startmode>
+      </interface>
+    </interfaces>
   </networking>
+
+  <firewall>
+    <default_zone>block</default_zone>
+    <enable_firewall config:type="boolean">true</enable_firewall>
+    <start_firewall config:type="boolean">true</start_firewall>
+    <zones config:type="list">
+      <zone>
+        <name>public</name>
+        <interfaces config:type="list">
+          <interface>eth0</interface>
+        </interfaces>
+        <services config:type="list">
+          <service>ssh</service>
+        </services>
+      </zone>
+    </zones>
+  </firewall>
+
+  <services-manager>
+    <services>
+      <disable config:type="list"/>
+      <enable config:type="list">
+        <service>sshd</service>
+      </enable>
+    </services>
+  </services-manager>
 
   <general>
     <ask-list config:type="list">
@@ -139,16 +170,6 @@
       </ask>
 
       <ask>
-        <question>Full name</question>
-        <type>string</type>
-        <pathlist config:type="list">
-          <path>users,1,fullname</path>
-        </pathlist>
-        <element config:type="integer">0</element>
-        <dialog config:type="integer">1</dialog>
-      </ask>
-
-      <ask>
         <question>Password</question>
         <type>string</type>
         <password config:type="boolean">true</password>
@@ -158,26 +179,6 @@
         </pathlist>
         <element config:type="integer">2</element>
         <dialog config:type="integer">1</dialog>
-      </ask>
-
-      <ask>
-        <title>Partitioning</title>
-        <question>Filesystem for /home</question>
-        <type>symbol</type>
-        <pathlist config:type="list">
-          <path>partitioning,0,partitions,1,filesystem</path>
-        </pathlist>
-        <selection config:type="list">
-          <entry>
-            <value>xfs</value>
-            <label>XFS</label>
-          </entry>
-          <entry>
-            <value>ext4</value>
-            <label>ext4</label>
-          </entry>
-        </selection>
-        <dialog config:type="integer">2</dialog>
       </ask>
     </ask-list>
   </general>

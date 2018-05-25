@@ -28,11 +28,6 @@
   <users config:type="list">
     <user>
       <username>root</username>
-      <fullname>root</fullname>
-      <uid>0</uid>
-      <gid>0</gid>
-      <home>/root</home>
-      <shell>/bin/bash</shell>
       <encrypted config:type="boolean">false</encrypted>
       <user_password>nots3cr3t</user_password>
     </user>
@@ -40,11 +35,10 @@
       <encrypted config:type="boolean">false</encrypted>
       <fullname>John Doe</fullname>
       <gid>100</gid>
-      <home>/home/jdoe</home>
       <shell>/usr/bin/fish</shell>
       <uid>1000</uid>
       <user_password>nots3cr3t</user_password>
-      <username>imo</username>
+      <username>jdoe</username>
     </user>
   </users>
 
@@ -53,11 +47,14 @@
   </keyboard>
 
   <language>
-    <!-- primary -->
     <language>en_US</language>
-    <!-- secondary languages -->
     <languages>cs_CZ,de_DE,en_US,es_ES</languages>
   </language>
+
+  <timezone>
+    <hwclock>UTC</hwclock>
+    <timezone>Atlantic/Canary</timezone>
+  </timezone>
 
   <software>
     <packages config:type="list">
@@ -65,9 +62,9 @@
     </packages>
 
     <patterns config:type="list">
+      <pattern>enlightenment</pattern>
       <pattern>enhanced_base</pattern>
       <pattern>enhanced_base_opt</pattern>
-      <pattern>enlightenment</pattern>
       <pattern>yast2_basis</pattern>
     </patterns>
   </software>
@@ -116,11 +113,11 @@
     <zones config:type="list">
       <zone>
         <name>public</name>
-	<interfaces config:type="list">
-	  <interface>eth0</interface>
-	</interfaces>
-	<services config:type="list">
-	  <service>ssh</service>
+        <interfaces config:type="list">
+          <interface>eth0</interface>
+        </interfaces>
+        <services config:type="list">
+          <service>ssh</service>
         </services>
       </zone>
     </zones>
@@ -130,7 +127,7 @@
     <services>
       <disable config:type="list"/>
       <enable config:type="list">
-	<service>sshd</service>
+        <service>sshd</service>
       </enable>
     </services>
   </services-manager>
