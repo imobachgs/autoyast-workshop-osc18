@@ -59,6 +59,7 @@
   <software>
     <packages config:type="list">
       <package>fish</package>
+      <package>firewall-config</package>
     </packages>
 
     <patterns config:type="list">
@@ -96,6 +97,9 @@
   </partitioning>
 
   <networking>
+    <dns>
+      <hostname>osc18</hostname>
+    </dns>
     <keep_install_network config:type="boolean">false</keep_install_network>
     <interfaces config:type="list">
       <interface>
